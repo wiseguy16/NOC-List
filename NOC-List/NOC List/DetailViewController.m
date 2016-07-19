@@ -82,7 +82,7 @@
         // 20. Once we have the last name of the agent from the code above, how do we set the view's title to the right
         //     string?
         //
-        self.title = [NSString stringWithFormat: @"Agent #%@", lastName]; // FIX THIS!!!
+        self.title = [NSString stringWithFormat: @"Agent #%@", lastName]; // FIX THIS!!!----FIXED!!
         
         
         //
