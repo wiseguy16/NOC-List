@@ -103,7 +103,7 @@
         //
         
         detailVC.agent = selectedAgent;
-     //   <#Once we have it, we need to set the destination view controller's agent property to the correct agent object#>
+     
     }
 }
 

@@ -74,14 +74,15 @@
         //
         //     (hint: We did something similar to this in HW 1)
         //
-    //    self.title = self.agent.coverName; // FIX THIS!!!!
+        NSArray *fullName = [self.agent.coverName componentsSeparatedByString:@" "]; // FIX THIS!!!!----FIXED!
+        NSString *lastName = fullName[1];
         
         
         //
         // 20. Once we have the last name of the agent from the code above, how do we set the view's title to the right
         //     string?
         //
-        self.title = self.agent.coverName; // FIX THIS!!!
+        self.title = [NSString stringWithFormat: @"Agent #%@", lastName]; // FIX THIS!!!
         
         
         //
