@@ -91,12 +91,12 @@
 			children = (
 				F39AE9091A79458E00FC3D7A /* AppDelegate.h */,
 				F39AE90A1A79458E00FC3D7A /* AppDelegate.m */,
-				F3F883A21A826D3300FD6688 /* Agent.h */,
-				F3F883A31A826D3300FD6688 /* Agent.m */,
-				F39AE90C1A79458E00FC3D7A /* MasterViewController.h */,
-				F39AE90D1A79458E00FC3D7A /* MasterViewController.m */,
 				F39AE90F1A79458E00FC3D7A /* DetailViewController.h */,
 				F39AE9101A79458E00FC3D7A /* DetailViewController.m */,
+				F39AE90C1A79458E00FC3D7A /* MasterViewController.h */,
+				F39AE90D1A79458E00FC3D7A /* MasterViewController.m */,
+				F3F883A21A826D3300FD6688 /* Agent.h */,
+				F3F883A31A826D3300FD6688 /* Agent.m */,
 				F39AE9121A79458E00FC3D7A /* Main.storyboard */,
 				F39AE9151A79458E00FC3D7A /* Images.xcassets */,
 				F39AE9171A79458E00FC3D7A /* LaunchScreen.xib */,
@@ -360,6 +360,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "NOC List/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -370,6 +371,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "NOC List/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

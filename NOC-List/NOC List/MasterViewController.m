@@ -25,17 +25,18 @@
     //
     // 3. Set the title of the view to "NOC List"
     //
+    self.title = @"NOC List";
     
     
     //
     // 4. Initialize the agents array as an NSMutableArray
     //
-    self.agents = <#how do we initialize an empty NSMutableArray#>;
+    self.agents = [[NSMutableArray alloc] init];;
 
     //
     // 5. Call the method loadNocList so the tableview will actually have objects to load into its cells.
     //
-    <#?#>
+    [self loadNocList];
     
 }
 
@@ -52,13 +53,20 @@
     //    Type in "forin" below. It should offer code completion for a for-in loop. Just hit enter to accept it.
     //    Use the "agents" array from above as the array to iterate over. Create an NSDictionary object on the left side
     //    of the for-in loop. You will use this inside the for loop to create an Agent object.
-    <#?#>
+    for (NSDictionary *aDict in agents)
+    {
+       
+        Agent *anAgent = [Agent agentWithDictionary:aDict];
+        [self.agents addObject:anAgent];
+        
+    }
+
     
     //
     // 7. Now that we have agent objects, call a method to instruct the table to reload its data.
     //
-    <#?#>
     
+    [self.tableView reloadData]; // MIGHT NEED A DIFFERENT NAME?? ----NO!
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,26 +82,28 @@
     //
     // 8. We need to set the segue identifier to the same one we used in the segue on the storyboard
     //
-    if ([[segue identifier] isEqualToString:@""])
+    if ([[segue identifier] isEqualToString:@"ShowAgentDetailSegue"])
     {
         //
         // 9. We need to get an NSIndexPath for the selected cell
         //
-        NSIndexPath *indexPath = <#how do we determine the indexPath for the selected cell?#>
+        DetailViewController *detailVC = [segue destinationViewController];
+        UITableViewCell *selectedCell = (UITableViewCell *)sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:selectedCell];
         
         //
         // 10. Now we're going to use the "row" property of the indexPath from above to pull out the associated Agent object
         //     from the agents array.
         //
-        Agent *selectedAgent = self.agents[<#where do we find the correct agent index?#>];
+        Agent *selectedAgent = self.agents[indexPath.row];
         
         //
         // 11. Now we need to send this Agent object to the detail view controller so it know's which agent's info to show.
         //     Look in the documentation on UIStoryboardSegue to find how to get the "destination" view controller.
         //
         
-        <#We need to get the view controller object at the destination of this segue#>
-        <#Once we have it, we need to set the destination view controller's agent property to the correct agent object#>
+        detailVC.agent = selectedAgent;
+     //   <#Once we have it, we need to set the destination view controller's agent property to the correct agent object#>
     }
 }
 
@@ -110,7 +120,7 @@
     // 12. How do we tell the table view how many rows we need?
     //
     
-    return <#how many rows?#>;
+    return self.agents.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -122,24 +132,25 @@
     //
     //     The method call below will perform this dequeuing operation. What should we set as the identifier?
     //
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#where can we find this identifier?#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AgentCell" forIndexPath:indexPath];
 
     //
     // 14. We need to get a handle to the appropriate Agent object. How do we do that? (hint: we've done this already ^)
     //
-    Agent *anAgent = <#how do we access a particular agent from our list? which one?#>
+    Agent *anAgent = self.agents[indexPath.row];
     
     //
     // 15. The cell needs to show both the cover name and the real name of the agent. Since we are using one of the built-in
     //     cell types, the "cell" object above has properties for these two labels already. How do we assign those?
     //
-    <#?#>
+    cell.textLabel.text = anAgent.coverName;
+    cell.detailTextLabel.text = anAgent.realName;
     
     //
     // 16. This method is supposed to give a cell back to its caller. How do we do that? Why is this method currently
     //     throwing an error?
     //
-    <#We have a cell, but how to we send it back to the caller?#>
+    return cell;
     
 }
 
